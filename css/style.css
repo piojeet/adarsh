@@ -978,6 +978,20 @@ ul {
   border-top: 1px solid #f1f5fd99;
 }
 
+.hero-section__container {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  column-gap: 70px;
+}
+
+.hero-section__image {
+  width: 100%;
+}
+
+.hero-section__content {
+  align-content: center;
+}
+
 
 @media only screen and (max-width: 900px) {
   .header__nav {
@@ -990,6 +1004,8 @@ ul {
     visibility: hidden;
     opacity: 0;
     transform: translateY(20px);
+    max-height: calc(100% - 100px);
+    overflow-y: auto;
   }
 
   .menu-active {
