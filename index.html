@@ -17,6 +17,11 @@
                     <a href="index.html">
                         <img src="assets/64a0120f26067bbd5896b39c_CI_InfluencerHero_FV.png" alt="logo">
                     </a>
+
+                    <div class="menu--btn">
+                        <span class="menu--line line--one"></span>
+                        <span class="menu--line line--two"></span>
+                    </div>
                 </div>
 
                 <!-- Navigation -->
@@ -25,7 +30,7 @@
                         <li class="nav__item nav__item--has-dropdown">
                             <span class="nav__item--has-dropdown-wrap">
                                 <span class="nav__title">Platform</span>
-                                <span><img src="assets/65f32f9fc8a2efbbafa7fae8_8 501.svg" alt="icon"></span>
+                                <span class="nav-rotate--icon"><img src="assets/65f32f9fc8a2efbbafa7fae8_8 501.svg" alt="icon"></span>
                             </span>
                             <div class="dropdown-menu-cont">
                                 <div class="dropdown-menu">
@@ -80,6 +85,7 @@
                         </li>
                         <li class="nav__item"><a href="">Blog</a></li>
                         <li class="nav__item"><a href="">Pricing</a></li>
+                        <li><a href="#" class="nav__item btn--login--mob">Log In</a></li>
                     </ul>
                 </div>
 
@@ -1063,51 +1069,86 @@
 
     <script>
         const dropdownBtns = document.querySelectorAll('.nav__item--has-dropdown');
-
+      
+        function handleMouseEnter(btn, dropdown, icon) {
+          dropdown.classList.add('dropdown-menu-cont--active');
+          icon.classList.add('nav-rotate--icon--active');
+        }
+      
+        function handleMouseLeave(dropdown, icon) {
+          dropdown.classList.remove('dropdown-menu-cont--active');
+          icon.classList.remove('nav-rotate--icon--active');
+        }
+      
         dropdownBtns.forEach(btn => {
-            const dropdown = btn.querySelector('.dropdown-menu-cont');
-
-            // Mouse enter - show dropdown
-            btn.addEventListener('mouseenter', () => {
-                dropdown.classList.add('dropdown-menu-cont--active');
+          const dropdown = btn.querySelector('.dropdown-menu-cont');
+          const dropdownicon = btn.querySelector('.nav-rotate--icon');
+          const trigger = btn.querySelector('.nav__item--has-dropdown-wrap');
+      
+          // Hover support only for desktop
+          const mouseEnterHandler = () => handleMouseEnter(btn, dropdown, dropdownicon);
+          const mouseLeaveHandler = () => handleMouseLeave(dropdown, dropdownicon);
+      
+          const addHoverListeners = () => {
+            if (window.innerWidth > 900) {
+              btn.addEventListener('mouseenter', mouseEnterHandler);
+              btn.addEventListener('mouseleave', mouseLeaveHandler);
+            } else {
+              btn.removeEventListener('mouseenter', mouseEnterHandler);
+              btn.removeEventListener('mouseleave', mouseLeaveHandler);
+            }
+          };
+      
+          addHoverListeners();
+          window.addEventListener('resize', addHoverListeners);
+      
+          // Click toggle only on trigger
+          trigger.addEventListener('click', (e) => {
+            e.stopPropagation();
+      
+            const isActive = dropdown.classList.contains('dropdown-menu-cont--active');
+      
+            // Close all other dropdowns
+            dropdownBtns.forEach(otherBtn => {
+              const otherDropdown = otherBtn.querySelector('.dropdown-menu-cont');
+              const otherIcon = otherBtn.querySelector('.nav-rotate--icon');
+              if (otherDropdown !== dropdown) {
+                otherDropdown.classList.remove('dropdown-menu-cont--active');
+                otherIcon.classList.remove('nav-rotate--icon--active');
+              }
             });
-
-            // Mouse leave - always hide dropdown
-            btn.addEventListener('mouseleave', () => {
-                dropdown.classList.remove('dropdown-menu-cont--active');
-            });
-
-            // Click toggle - open/close
-            btn.addEventListener('click', (e) => {
-                e.stopPropagation(); // prevent bubbling
-
-                const isActive = dropdown.classList.contains('dropdown-menu-cont--active');
-
-                // Remove active class from all other dropdowns
-                dropdownBtns.forEach(otherBtn => {
-                    const otherDropdown = otherBtn.querySelector('.dropdown-menu-cont');
-                    if (otherDropdown !== dropdown) {
-                        otherDropdown.classList.remove('dropdown-menu-cont--active');
-                    }
-                });
-
-                // Toggle current
-                if (!isActive) {
-                    dropdown.classList.add('dropdown-menu-cont--active');
-                } else {
-                    dropdown.classList.remove('dropdown-menu-cont--active');
-                }
-            });
+      
+            // Toggle current
+            if (!isActive) {
+              dropdown.classList.add('dropdown-menu-cont--active');
+              dropdownicon.classList.add('nav-rotate--icon--active');
+            } else {
+              dropdown.classList.remove('dropdown-menu-cont--active');
+              dropdownicon.classList.remove('nav-rotate--icon--active');
+            }
+          });
+      
+          // Prevent dropdown from closing when clicking inside it
+          dropdown.addEventListener('click', (e) => {
+            e.stopPropagation();
+          });
         });
-
-        // Click outside - close all dropdowns
+      
+        // Click outside to close all
         document.addEventListener('click', () => {
-            dropdownBtns.forEach(btn => {
-                const dropdown = btn.querySelector('.dropdown-menu-cont');
-                dropdown.classList.remove('dropdown-menu-cont--active');
-            });
+          dropdownBtns.forEach(btn => {
+            const dropdown = btn.querySelector('.dropdown-menu-cont');
+            const dropdownicon = btn.querySelector('.nav-rotate--icon');
+            dropdown.classList.remove('dropdown-menu-cont--active');
+            dropdownicon.classList.remove('nav-rotate--icon--active');
+          });
         });
-    </script>
+      </script>
+      
+    
+    
+    
+    
 
     <script>
         const track = document.getElementById('scroll-track');
@@ -1154,6 +1195,21 @@
             });
         });
     </script>
+
+
+<script>
+    let menubtn = document.querySelectorAll('.menu--btn');
+    let navmenu = document.querySelectorAll('.header__nav');
+
+    menubtn.forEach(btn => {
+        btn.addEventListener('click', () => {
+            navmenu.forEach(menu => {
+                menu.classList.toggle('menu-active'); // ✅ corrected line
+                btn.classList.toggle('btn-active');
+            });
+        });
+    });
+</script>
 
 
 
