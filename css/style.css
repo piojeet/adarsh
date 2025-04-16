@@ -978,7 +978,7 @@ ul {
   border-top: 1px solid #f1f5fd99;
 }
 
-.hero-section__container {
+.hero-section__container--influncer {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   column-gap: 70px;
@@ -990,6 +990,10 @@ ul {
 
 .hero-section__content {
   align-content: center;
+}
+
+.bg-gray {
+  background: var(--ghost-white);
 }
 
 
@@ -1172,6 +1176,17 @@ ul {
     font-size: 19px;
     text-decoration: none;
     cursor: pointer;
+  }
+
+  .colunm-revs {
+    display: flex;
+    flex-direction: column-reverse;
+    gap: 20px;
+  }
+
+  .hero-section__container--influncer {
+    grid-template-columns: 1fr;
+    row-gap: 2rem;
   }
 
 }

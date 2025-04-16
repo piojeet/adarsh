@@ -1,3 +1,23 @@
+document.addEventListener('DOMContentLoaded', () => {
+    const menubtns = document.querySelectorAll('.menu--btn');
+    const navmenus = document.querySelectorAll('.header__nav');
+
+    if (menubtns.length && navmenus.length) {
+        menubtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                navmenus.forEach(menu => {
+                    menu.classList.toggle('menu-active');
+                });
+                btn.classList.toggle('btn-active');
+            });
+        });
+    }
+});
+
+
+
+
+
 const dropdownBtns = document.querySelectorAll('.nav__item--has-dropdown');
 
 function handleMouseEnter(btn, dropdown, icon) {
@@ -119,14 +139,3 @@ document.querySelectorAll('.faq-section__question').forEach((question) => {
 });
 
 
-let menubtn = document.querySelectorAll('.menu--btn');
-let navmenu = document.querySelectorAll('.header__nav');
-
-menubtn.forEach(btn => {
-    btn.addEventListener('click', () => {
-        navmenu.forEach(menu => {
-            menu.classList.toggle('menu-active'); // ✅ corrected line
-            btn.classList.toggle('btn-active');
-        });
-    });
-});
