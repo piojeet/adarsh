@@ -996,6 +996,70 @@ ul {
   background: var(--ghost-white);
 }
 
+.campaign-tracking-heading {
+  text-align: center;
+}
+
+.campaign-tracking-description {
+  text-align: center;
+  line-height: 1.5rem;
+}
+
+.campaign-tracking-image {
+  margin-top: 56px;
+}
+
+.hypeauditor-section {
+  background: #172B6F;
+}
+
+.hypeauditor-flex {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 70px;
+}
+
+.hypeauditor-left-inner {
+  background: var(--white);
+  position: relative;
+  padding: 48px 58px 48px 183px;
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+.hypeauditor-img {
+  position: absolute;
+  left: -100px;
+  bottom: -2px;
+  height: 100%;
+}
+
+.hypeauditor-left-desc {
+  margin: 20px 0 32px;
+  font-family: var(--font-lato-regular);
+  color: var(--dim-grey);
+  font-weight: 500;
+  line-height: 1.5rem;
+}
+
+.hypeauditor-left-heading {
+  font-family: var(--font-lato-bild);
+  font-size: 25px;
+  color: var(--midnight-blue);
+  line-height: 1.5rem;
+}
+
+.hypeauditor-right-desc {
+  margin-bottom: 32px;
+  color: var(--white);
+  font-family: var(--font-lato-regular);
+  font-weight: 500;
+}
+
+.hypeauditor-right-heading {
+  color: var(--white);
+}
+
 
 @media only screen and (max-width: 900px) {
   .header__nav {
@@ -1189,6 +1253,12 @@ ul {
     row-gap: 2rem;
   }
 
+  .hypeauditor-flex {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    gap: 50px;
+}
+
 }
 
 
@@ -1233,6 +1303,20 @@ ul {
   .dropdown-menu__image img {
     width: 100%;
   }
+
+  .hypeauditor-left-inner {
+    background: var(--white);
+    position: relative;
+    padding: 20px 20px 191px 20px;
+    border-radius: 6px;
+    overflow: hidden;
+}
+
+.hypeauditor-img {
+  left: 50%;
+  height: 150px;
+  transform: translateX(-50%);
+}
 }
 
 @media only screen and (max-width: 550px) {
