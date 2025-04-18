@@ -73,6 +73,44 @@
                                                 </a>
                                             </li>
 
+                                            <li class="dropdown-menu__item">
+                                                <span class="dropdown-menu__icon">
+                                                    <img src="assets/64a1b9b7709a48bfa6161131_Menu-analyze-influencers 1.svg"
+                                                        alt="icon">
+                                                </span>
+                                                <a href="pages/campaign-reporting.html" class="dropdown-menu-ancur">
+                                                    <span class="dropdown-menu__title">
+                                                        Campaign Management
+                                                        <span class="dropdown-menu__title-arrow"><img
+                                                                src="assets/649eae9280d73b35d8ed2f13_Vector.svg"
+                                                                alt="icon"></span>
+                                                    </span>
+                                                    <span class="dropdown-menu__desc">
+                                                        Find influencers using detailed filters, including location,
+                                                        audience demographics, look a likes and much more
+                                                    </span>
+                                                </a>
+                                            </li>
+
+                                            <li class="dropdown-menu__item">
+                                                <span class="dropdown-menu__icon">
+                                                    <img src="assets/64a1b9b7709a48bfa6161131_Menu-analyze-influencers 1.svg"
+                                                        alt="icon">
+                                                </span>
+                                                <a href="pages/competitor-analysis.html" class="dropdown-menu-ancur">
+                                                    <span class="dropdown-menu__title">
+                                                        Competitor Analysis
+                                                        <span class="dropdown-menu__title-arrow"><img
+                                                                src="assets/649eae9280d73b35d8ed2f13_Vector.svg"
+                                                                alt="icon"></span>
+                                                    </span>
+                                                    <span class="dropdown-menu__desc">
+                                                        Find influencers using detailed filters, including location,
+                                                        audience demographics, look a likes and much more
+                                                    </span>
+                                                </a>
+                                            </li>
+
 
                                             <!-- Repeat the above li for all menu items -->
                                         </ul>
@@ -83,7 +121,7 @@
                                 </div>
                             </div>
                         </li>
-                        <li class="nav__item"><a href="">Blog</a></li>
+                        <li class="nav__item"><a href="pages/blog.html">Blog</a></li>
                         <li class="nav__item"><a href="">Pricing</a></li>
                         <li><a href="#" class="nav__item btn--login--mob">Log In</a></li>
                     </ul>
@@ -1066,6 +1104,24 @@
         </div>
     </footer>
 
+    <script>
+        const track = document.getElementById('scroll-track');
+
+// Duplicate images for seamless loop
+track.innerHTML += track.innerHTML;
+
+let scrollAmount = 0;
+function animate() {
+    scrollAmount += 1;
+    if (scrollAmount >= track.scrollWidth / 2) {
+        scrollAmount = 0; // Reset without blink
+    }
+    track.style.transform = `translateX(-${scrollAmount}px)`;
+    requestAnimationFrame(animate);
+}
+
+animate();
+    </script>
 <script src="js/script.js"></script>
 
 </body>

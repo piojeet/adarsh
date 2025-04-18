@@ -96,22 +96,7 @@ document.addEventListener('click', () => {
 
 
 
-const track = document.getElementById('scroll-track');
 
-// Duplicate images for seamless loop
-track.innerHTML += track.innerHTML;
-
-let scrollAmount = 0;
-function animate() {
-    scrollAmount += 1;
-    if (scrollAmount >= track.scrollWidth / 2) {
-        scrollAmount = 0; // Reset without blink
-    }
-    track.style.transform = `translateX(-${scrollAmount}px)`;
-    requestAnimationFrame(animate);
-}
-
-animate();
 
 
 
